@@ -1,0 +1,390 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS for underwater theme */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 25%, #1e3a8a 50%, #3730a3 75%, #0f172a 100%);
+    background-size: 400% 400%;
+    animation: oceanFlow 20s ease-in-out infinite;
+  }
+}
+
+@layer components {
+  /* Ocean flow animation */
+  @keyframes oceanFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Jellyfish floating animation */
+  @keyframes jellyfishFloat {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg); 
+      opacity: 0.3;
+    }
+    25% { 
+      transform: translateY(-20px) rotate(2deg); 
+      opacity: 0.5;
+    }
+    50% { 
+      transform: translateY(-10px) rotate(-1deg); 
+      opacity: 0.4;
+    }
+    75% { 
+      transform: translateY(-30px) rotate(1deg); 
+      opacity: 0.6;
+    }
+  }
+
+  /* Jellyfish pulse animation */
+  @keyframes jellyfishPulse {
+    0%, 100% { 
+      transform: scale(1);
+      opacity: 0.2;
+    }
+    50% { 
+      transform: scale(1.1);
+      opacity: 0.4;
+    }
+  }
+
+  /* Bubble animation */
+  @keyframes bubbleRise {
+    0% {
+      transform: translateY(100vh) scale(0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(-100px) scale(1);
+      opacity: 0;
+    }
+  }
+
+  /* Glow effect */
+  @keyframes glow {
+    0%, 100% { 
+      box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
+    }
+    50% { 
+      box-shadow: 0 0 40px rgba(147, 51, 234, 0.6);
+    }
+  }
+
+  /* Text shimmer effect */
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  /* Card hover effect */
+  @keyframes cardFloat {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-10px); }
+  }
+
+  /* Wave animation */
+  @keyframes wave {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-20px); }
+  }
+}
+
+/* Custom utility classes */
+.jellyfish-float {
+  animation: jellyfishFloat 8s ease-in-out infinite;
+}
+
+.jellyfish-pulse {
+  animation: jellyfishPulse 4s ease-in-out infinite;
+}
+
+.bubble-rise {
+  animation: bubbleRise 6s linear infinite;
+}
+
+.glow-effect {
+  animation: glow 3s ease-in-out infinite;
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #f0f9ff, #e0e7ff, #f0f9ff);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  animation: cardFloat 0.3s ease forwards;
+  box-shadow: 0 20px 40px rgba(147, 51, 234, 0.2);
+}
+
+.wave-animation {
+  animation: wave 2s ease-in-out infinite;
+}
+
+/* Glassmorphism effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #a855f7, #3b82f6, #06b6d4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Underwater particles */
+.underwater-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(147, 51, 234, 0.3);
+  border-radius: 50%;
+  animation: bubbleRise 8s linear infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #a855f7, #3b82f6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #9333ea, #2563eb);
+}
+
+/* Loading animation */
+.loading-dots {
+  display: inline-block;
+}
+
+.loading-dots::after {
+  content: '';
+  animation: loadingDots 1.5s infinite;
+}
+
+@keyframes loadingDots {
+  0%, 20% { content: ''; }
+  40% { content: '.'; }
+  60% { content: '..'; }
+  80%, 100% { content: '...'; }
+}
+
+/* Button hover effects */
+.btn-underwater {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-underwater::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-underwater:hover::before {
+  left: 100%;
+}
+
+/* Navigation link effects */
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #a855f7, #3b82f6);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Skill tag animations */
+.skill-tag {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(147, 51, 234, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.skill-tag:hover::before {
+  left: 100%;
+}
+
+.skill-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);
+}
+
+/* Project card effects */
+.project-card {
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(59, 130, 246, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* Blog post hover effects */
+.blog-post {
+  transition: all 0.3s ease;
+}
+
+.blog-post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(147, 51, 234, 0.2);
+}
+
+/* Memory card effects */
+.memory-card {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.memory-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(147, 51, 234, 0.1) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.memory-card:hover::after {
+  transform: translateX(100%);
+}
+
+/* Contact form effects */
+.form-input {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.form-input:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(147, 51, 234, 0.3);
+}
+
+/* Social media icon effects */
+.social-icon {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(147, 51, 234, 0.4);
+}
+
+/* Footer wave effect */
+.footer-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(59, 130, 246, 0.1));
+  clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 50%);
+  animation: wave 4s ease-in-out infinite;
+}
+
+/* Responsive animations */
+@media (max-width: 768px) {
+  .jellyfish-float {
+    animation-duration: 12s;
+  }
+  
+  .bubble-rise {
+    animation-duration: 8s;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Print styles */
+@media print {
+  .jellyfish-float,
+  .jellyfish-pulse,
+  .bubble-rise,
+  .glow-effect,
+  .shimmer-text {
+    animation: none;
+  }
+} 
